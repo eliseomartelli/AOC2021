@@ -14,11 +14,11 @@ type Movement struct {
 	dy int
 }
 
-var movements = map[string]Movement {
-	"forward": {1,0},
-	"down": {0,1},
-	"up": {0,-1},
-};
+var movements = map[string]Movement{
+	"forward": {1, 0},
+	"down":    {0, 1},
+	"up":      {0, -1},
+}
 
 func main() {
 	movements, err := parseFile("input")
@@ -30,26 +30,26 @@ func main() {
 }
 
 func solution_1(movements []Movement) int {
-	var res Movement;
+	var res Movement
 	for _, m := range movements {
-		res.dx += m.dx;
-		res.dy += m.dy;
+		res.dx += m.dx
+		res.dy += m.dy
 	}
-	return res.dx * res.dy;
+	return res.dx * res.dy
 }
 
 func solution_2(movements []Movement) int {
-	var aim int;
-	var res Movement;
+	var aim int
+	var res Movement
 	for _, m := range movements {
 		if m.dx == 0 { // When movement is vertical.
-			aim += m.dy;
+			aim += m.dy
 		} else {
-			res.dx += m.dx;
-			res.dy += m.dx * aim; // Multiply movement by aim.
+			res.dx += m.dx
+			res.dy += m.dx * aim // Multiply movement by aim.
 		}
 	}
-	return res.dx * res.dy;
+	return res.dx * res.dy
 }
 
 func parseFile(path string) ([]Movement, error) {
@@ -62,7 +62,7 @@ func parseFile(path string) ([]Movement, error) {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		s := strings.Split(scanner.Text(), " ")
-		distance, err := strconv.ParseInt(s[1], 10, 0);
+		distance, err := strconv.ParseInt(s[1], 10, 0)
 		if err != nil {
 			return nil, err
 		}

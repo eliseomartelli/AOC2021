@@ -12,7 +12,7 @@ import (
 var b2i = map[bool]int{false: 0, true: 1}
 
 func main() {
-	numbers, err := arrayFromFile("input")
+	numbers, err := readFile("input")
 	if err != nil {
 		log.Fatalf("Error reading input file.")
 	}
@@ -44,7 +44,7 @@ func solution_2(numbers []int) int {
 	return count
 }
 
-func arrayFromFile(path string) ([]int, error) {
+func readFile(path string) ([]int, error) {
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, err
