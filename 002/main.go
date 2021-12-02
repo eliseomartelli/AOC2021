@@ -42,11 +42,11 @@ func solution_2(movements []Movement) int {
 	var aim int;
 	var res Movement;
 	for _, m := range movements {
-		if m.dx == 0 {
+		if m.dx == 0 { // When movement is vertical.
 			aim += m.dy;
 		} else {
 			res.dx += m.dx;
-			res.dy += m.dx * aim;
+			res.dy += m.dx * aim; // Multiply movement by aim.
 		}
 	}
 	return res.dx * res.dy;
